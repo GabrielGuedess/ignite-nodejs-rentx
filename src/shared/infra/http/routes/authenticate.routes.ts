@@ -1,8 +1,6 @@
 import { Router } from 'express';
 
-import 'reflect-metadata';
-
-import { AuthenticateUserController } from '../modules/accounts/useCases/authenticateUser/AuthenticateUserController';
+import { AuthenticateUserController } from '@modules/accounts/useCases/authenticateUser/AuthenticateUserController';
 
 export const authenticateRoutes = Router();
 
