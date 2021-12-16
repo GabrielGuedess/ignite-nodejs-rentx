@@ -55,7 +55,7 @@
     ],
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": ["**/*.spec.js", "./jest.config.ts"] }
+      { "devDependencies": ["**/*.spec.js", "**/*.spec.ts", "./jest.config.ts"] }
     ]
   },
   "settings": {
