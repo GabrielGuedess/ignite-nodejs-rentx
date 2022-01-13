@@ -22,8 +22,9 @@ describe('Create Category Controller', () => {
   });
 
   afterAll(async () => {
-    await connection.query('DELETE from users');
+    await connection.query('DELETE from users_tokens');
     await connection.query('DELETE from categories');
+    await connection.query('DELETE from users');
     await connection.close();
   });
 
@@ -33,7 +34,7 @@ describe('Create Category Controller', () => {
       password: 'admin',
     });
 
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
 
     const response = await request(app)
       .post('/categories')
@@ -42,7 +43,7 @@ describe('Create Category Controller', () => {
         description: 'Category Supertest',
       })
       .set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
     expect(response.status).toBe(201);
@@ -66,6 +67,6 @@ describe('Create Category Controller', () => {
         Authorization: `Bearer ${token}`,
       });
 
-    expect(response.status).toBe(400);
+    expect(response.status).toBe(401);
   });
 });
